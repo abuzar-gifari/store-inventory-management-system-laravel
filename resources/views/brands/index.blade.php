@@ -6,12 +6,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Category List</h1>
+              <h1 class="m-0">Brands List</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Category List</li>
+                <li class="breadcrumb-item active">Brands List</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -28,7 +28,7 @@
               <div class="card">
                 <div class="card-header">
                   <h5 class="m-0">
-                    <a href="{{ route('categories.create') }}" class="btn btn-primary"> <i class="fa fa-plus"> Add Category</i></a>
+                    <a href="{{ route('brands.create') }}" class="btn btn-primary"> <i class="fa fa-plus"> Add Brand</i></a>
                   </h5>
                 </div>
                 <table class="table table-bordered datatable pr-2 pl-2">
@@ -41,18 +41,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @if ($categories)
-                      @foreach ($categories as $key=>$cat)
+                    @if ($brands)
+                      @foreach ($brands as $key=>$brand)
                         <tr>
                           <td>{{ ++$key }}</td>
-                          <td>{{ $cat->name ?? "" }}</td>
+                          <td>{{ $brand->name ?? "" }}</td>
                           <td>
-                            <a href="{{ route('categories.edit',$cat->id) }}" class="btn btn-success btn-sm">
+                            <a href="{{ route('brands.edit',$brand->id) }}" class="btn btn-success btn-sm">
                               <i class="fa fa-edit"></i>
                             </a>
                           </td>
                           <td>
-                            <form action="{{ route('categories.destroy',$cat->id) }}" method="post">
+                            <form action="{{ route('brands.destroy',$brand->id) }}" method="post">
                               @csrf
                               @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">
