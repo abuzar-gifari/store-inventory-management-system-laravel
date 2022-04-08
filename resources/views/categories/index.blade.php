@@ -24,17 +24,21 @@
           <div class="row">
            
             <!-- /.col-md-6 -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="m-0">Create Category</h5>
+                  <h5 class="m-0">
+                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Create a Category</a>
+                    
+                  </h5>
                 </div>
                 <table class="table table-bordered datatable pr-2 pl-2">
                   <thead>
                     <tr>
                       <th>#SL</th>
                       <th>Name</th>
-                      <th>Actions</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -44,7 +48,18 @@
                           <td>{{ ++$key }}</td>
                           <td>{{ $cat->name ?? "" }}</td>
                           <td>
-
+                            <a href="{{ route('categories.edit',$cat->id) }}" class="btn btn-success btn-sm">
+                              <i class="fa fa-edit"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <form action="{{ route('categories.destroy',$cat->id) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                  <i class="fa fa-trash"></i>  
+                                </button>
+                            </form>
                           </td>
                         </tr>                        
                       @endforeach

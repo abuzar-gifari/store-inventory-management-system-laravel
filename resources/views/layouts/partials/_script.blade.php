@@ -17,6 +17,7 @@
 <script src="{{ asset('admin') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="{{ asset('admin') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('admin') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);

@@ -45,7 +45,7 @@ class CategoriesController extends Controller
         $category->save();
 
         // flash('Category created succesfully')->success();
-        return back();
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -67,7 +67,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view("categories.edit",compact('category'));
     }
 
     /**
@@ -79,7 +80,15 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[ 
+            'name'=>'required|min:2|max:30|unique:categories,name,'.$id
+        ]);
+
+        $category = Category::findOrFail($id);
+        $category->name=$request->name;
+        $category->save();
+        return redirect()->route('categories.index');
+
     }
 
     /**
@@ -90,6 +99,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->back();
     }
 }
